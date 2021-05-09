@@ -50,17 +50,17 @@ function UserProfile({ data, history }) {
     Country: isempty ? user.Address.Country : "",
     PostalCode: isempty ? user.Address.PostalCode : ""
   })
-  useEffect(() => {
-
-    if (!isempty) {
-      history.push("/")
-    }
-  }, [])
+  // useEffect(() => {
+  //   console.log("hekol");
+  //   if (!isempty) {
+  //     history.push("/")
+  //   }
+  // }, [])
   const classes = useStyles();
+
   const submited = async (e) => {
 
     e.preventDefault()
-    console.log(submitUser);
     const response = await updateUser(submitUser)
     console.log({ response });
     history.push("/admin")

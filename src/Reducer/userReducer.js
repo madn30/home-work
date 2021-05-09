@@ -1,10 +1,3 @@
-/*
-action - json with :
-    - type (Mandatory) - The type of the action
-    - payload (Optional) - The data send with the action
-
-*/
-
 const UserReducer = (state = { user: {} }, action) => {
     switch (action.type) {
         case "ADD":

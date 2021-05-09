@@ -68,15 +68,10 @@ export default connect()(function Login({ dispatch, history }) {
 
     const SubmitForm = async (e) => {
         e.preventDefault()
-
         const result = await signinUser(Email, Password)
-
         if (result) {
-
-            localStorage.setItem('token', result.token);
-
-
-            dispatch({ type: "ADD", payload: result.User })
+            sessionStorage.setItem('token', result.token);
+            dispatch({ type: "ADD", payload: result.user })
             history.push("/admin")
 
         }

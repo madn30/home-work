@@ -40,7 +40,7 @@ const switchRoutes = (
 const useStyles = makeStyles(styles);
 
 export default function Admin({ history, ...rest }) {
-  let token = localStorage.getItem('token')
+  let token = sessionStorage.getItem('token')
 
   useEffect(() => {
     if (!token) {

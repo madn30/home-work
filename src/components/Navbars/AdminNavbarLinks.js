@@ -26,7 +26,6 @@ import styles from "assets/jss/material-dashboard-react/components/headerLinksSt
 const useStyles = makeStyles(styles);
 
 export default function AdminNavbarLinks() {
-  let token = localStorage.getItem('token')
   let history = useHistory();
   const classes = useStyles();
   const [openNotification, setOpenNotification] = React.useState(null);
@@ -49,11 +48,17 @@ export default function AdminNavbarLinks() {
     }
   };
   const handleCloseProfile = async () => {
-    localStorage.clear()
-    history.push("/")
     setOpenProfile(null);
 
   };
+  const edituser = () => {
+
+    history.push("/admin/user")
+  }
+  const handlelogout = () => {
+    sessionStorage.clear()
+    history.push("/")
+  }
   return (
     <div>
       <div className={classes.searchWrapper}>
@@ -177,7 +182,7 @@ export default function AdminNavbarLinks() {
           <Person className={classes.icons} />
 
           <Hidden mdUp implementation="css">
-            <p className={classes.linkText}>Profile</p>
+            <p className={classes.linkText}>Prfile</p>
           </Hidden>
 
         </Button>
@@ -206,10 +211,10 @@ export default function AdminNavbarLinks() {
                 <ClickAwayListener onClickAway={handleCloseProfile}>
                   <MenuList role="menu">
                     <MenuItem
-                      onClick={handleCloseProfile}
+                      onClick={edituser}
                       className={classes.dropdownItem}
                     >
-                      Profile
+                      Profs
                     </MenuItem>
                     <MenuItem
                       onClick={handleCloseProfile}
@@ -218,7 +223,7 @@ export default function AdminNavbarLinks() {
                     </MenuItem>
                     <Divider light />
                     <MenuItem
-                      onClick={handleCloseProfile}
+                      onClick={handlelogout}
                       className={classes.dropdownItem}
                     >
                       Logout
@@ -231,6 +236,6 @@ export default function AdminNavbarLinks() {
         </Poppers>
 
       </div>
-    </div>
+    </div >
   );
 }
