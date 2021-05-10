@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-const URL = 'https://idan-homework22.herokuapp.com/api/users';
-//const URL = 'http://localhost:8000/api/users';
+const URL = 'https://home-work-serv.herokuapp.com/api/users';
 
 axios.interceptors.request.use(req => {
-    req.headers.Authorization = `Bearer ${sessionStorage.getItem("token")}`;
+    req.headers.Authorization = `${sessionStorage.getItem("token")}`;
     return req;
 });
 

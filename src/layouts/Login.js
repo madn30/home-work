@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default connect()(function Login({ dispatch, history }) {
+    console.log("login ");
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
 
@@ -69,15 +70,15 @@ export default connect()(function Login({ dispatch, history }) {
     const SubmitForm = async (e) => {
         e.preventDefault()
         const result = await signinUser(Email, Password)
-        if (result) {
+        console.log(result);
+
+        if (result.success) {
             sessionStorage.setItem('token', result.token);
             dispatch({ type: "ADD", payload: result.user })
             history.push("/admin")
-
         }
         else {
-
-            alert("UserName or Password Invaild")
+            alert("Email or Password Invaild")
         }
     }
     return (

@@ -42,6 +42,7 @@ const useStyles = makeStyles(styles);
 export default function Admin({ history, ...rest }) {
   let token = sessionStorage.getItem('token')
 
+
   useEffect(() => {
     if (!token) {
 
